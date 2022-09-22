@@ -29,9 +29,9 @@ appProjects:
         # chart is in the root of the repo. Use a relative path otherwise
         gitPath: './shared'
 
-      - name: acm-policy-hub
-        gitPath: './hub'
-      - name: acm-policy-dev
-        gitPath: './dev'
-      - name: acm-policy-stage
-        gitPath: './stage'
+      # - name: acm-policy-hub
+      #   gitPath: './hub'
+      # - name: acm-policy-dev
+      #   gitPath: './dev'
+      # - name: acm-policy-stage
+      #   gitPath: './stage'
