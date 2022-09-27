@@ -4,10 +4,10 @@ appProjects:
   - name: acm-policy
 
     # Description for the project
-    description: "ACM policies for the OpenShift fleet"
+    description: "ACM policies for OpenShift cluster management"
 
     # Display name for the project
-    displayName: "ACM Policies"
+    displayName: "ACM Policy"
 
     # URL to a Git repo with application Helm charts for this project. This URL
     # should end in ".git"
@@ -23,15 +23,8 @@ appProjects:
     applications:
         # Name of the application. THIS MUST BE UNIQUE! Even if deployed into a
         # different project, Argo CD Application names must be unique
-      - name: acm-policy-shared
+      - name: acm-policy
 
         # Path inside the project gitUrl to the Helm chart. Use "." if the
         # chart is in the root of the repo. Use a relative path otherwise
-        gitPath: './shared'
-
-      # - name: acm-policy-hub
-      #   gitPath: './hub'
-      # - name: acm-policy-dev
-      #   gitPath: './dev'
-      # - name: acm-policy-stage
-      #   gitPath: './stage'
+        gitPath: '.'
