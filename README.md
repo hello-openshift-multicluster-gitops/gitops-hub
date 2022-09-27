@@ -25,7 +25,7 @@ graph TD
 
         ACM -- "Continously deploys<br />'gitops-hub' repo" --> GitOpsHub
         GitOpsHub -- "Continously deploys<br />application repos" --> SharedApplications
-        GitOpsHub -- "Continously deploys<br />'policy' repo" --> ACM Policies
+        GitOpsHub -- "Continously deploys<br />'policy' repo" --> Policies
 ```
 
 ## Values
