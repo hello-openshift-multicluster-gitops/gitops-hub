@@ -5,23 +5,33 @@ architecture.
 
 # GitOps Configurations for Hub Cluster
 
-This repo contains Argo CD configurations for all applications on the hub
-cluster. It is a Helm chart which deploys Namespaces, AppProjects, and
+This repo contains Argo CD configurations for all applications on the dev
+cluster. It contains a Helm chart which deploys Namespaces, AppProjects, and
 Applications, based on configurations in values.yaml.
 
-This repo is continuously pushed by ACM to the hub cluster.
+This repo is continuously deployed by ACM to the Hub cluster. The ACM
+subscription that deploys this repo is set up in [bootstrap].
 
-## Deploying
+```mermaid
+graph TD
+        ACM["Red Hat Advanced Cluster<br />Mangement (ACM) for Kubernetes"]
 
-This will deploy an ACM Application (Subscription and other required objects)
-on the hub cluster, which will continuously deploy this repo to the hub
-cluster:
+        subgraph hub [Hub Openshift Cluster]
+        ACM
+        GitOpsHub["OpenShift GitOps<br />(Argo CD)"]
+        SharedApplications["Shared Applications"]
+        Policies["ACM Policies"]
+        end
 
-```bash
-./deploy.sh
+        ACM -- "Continously deploys<br />'gitops-hub' repo" --> GitOpsHub
+        GitOpsHub -- "Continously deploys<br />application repos" --> SharedApplications
+        GitOpsHub -- "Continously deploys<br />'policy' repo" --> ACM Policies
 ```
 
 ## Values
+
+Applications that this chart will deploy are configured in
+[values.yaml](values.yaml).
 
 | Value                                        | Required? | Description |
 | -------------------------------------------- | --------- | ----------- |
